@@ -81,6 +81,63 @@ int dram_init_banksize(void)
 	return 0;
 }
 
+#ifdef CONFIG_OF_BOARD
+#define JUNO_FLASH_SEC_SIZE	(256 * 1024)
+static phys_addr_t find_dtb_in_nor_flash(void)
+{
+	int i;
+	phys_addr_t sector = CONFIG_SYS_FLASH_BASE;
+
+	for (i = 0;
+	     i < CONFIG_SYS_MAX_FLASH_SECT;
+	     i++, sector += JUNO_FLASH_SEC_SIZE) {
+		u32 reg;
+		phys_addr_t imginfo;
+
+		reg = readl(sector + JUNO_FLASH_SEC_SIZE - 0x04);
+                /* This makes up the string "HSLFTOOF" flash footer */
+		if (reg != 0x464F4F54U)
+			continue;
+		reg = readl(sector + JUNO_FLASH_SEC_SIZE - 0x08);
+                if (reg != 0x464C5348U)
+			continue;
+
+		reg = readl(sector + JUNO_FLASH_SEC_SIZE - 0x30);
+		if (reg != 0x72616f62)	/* "boar" */
+			continue;
+		reg = readl(sector + JUNO_FLASH_SEC_SIZE - 0x2c);
+		if (reg != 0x74642e64)	/* "d.dt" */
+			continue;
+		reg = readl(sector + JUNO_FLASH_SEC_SIZE - 0x28);
+		if ((reg & 0xffff) != 0x0062)	/* "b\0" */
+			continue;
+
+		reg = readl(sector + JUNO_FLASH_SEC_SIZE - 0x10);
+		imginfo = sector + JUNO_FLASH_SEC_SIZE - 0x30 - reg;
+		reg = readl(imginfo + 0x54);
+
+		return CONFIG_SYS_FLASH_BASE + reg * JUNO_FLASH_SEC_SIZE;
+	}
+
+	printf("No DTB found\n");
+
+	return ~0;
+}
+
+void *board_fdt_blob_setup(void)
+{
+	phys_addr_t fdt_rom_addr = find_dtb_in_nor_flash();
+
+	debug("found board.dtb NOR flash partition at 0x%llx\n", fdt_rom_addr);
+
+	if (fdt_rom_addr == ~0UL) {
+		return NULL;
+	}
+
+	return (void *)fdt_rom_addr;
+}
+#endif
+
 /*
  * Board specific reset that is system reset.
  */
