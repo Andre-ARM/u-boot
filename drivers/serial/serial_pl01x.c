@@ -12,6 +12,7 @@
 
 #include <common.h>
 #include <dm.h>
+#include <clk.h>
 #include <errno.h>
 #include <watchdog.h>
 #include <asm/io.h>
@@ -340,14 +341,21 @@ static const struct udevice_id pl01x_serial_id[] ={
 int pl01x_serial_ofdata_to_platdata(struct udevice *dev)
 {
 	struct pl01x_serial_platdata *plat = dev_get_platdata(dev);
+	struct clk clk;
 	fdt_addr_t addr;
+	int ret;
 
 	addr = devfdt_get_addr(dev);
 	if (addr == FDT_ADDR_T_NONE)
 		return -EINVAL;
 
 	plat->base = addr;
-	plat->clock = dev_read_u32_default(dev, "clock", 1);
+	plat->clock = dev_read_u32_default(dev, "clock", CONFIG_PL011_CLOCK);
+	ret = clk_get_by_index(dev, 0, &clk);
+	if (!ret) {
+		clk_enable(&clk);
+		plat->clock = clk_get_rate(&clk);
+	}
 	plat->type = dev_get_driver_data(dev);
 	plat->skip_init = dev_read_bool(dev, "skip-init");
 
