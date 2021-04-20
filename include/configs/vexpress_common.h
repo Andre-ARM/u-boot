@@ -201,7 +201,7 @@
 		"bootflash=run flashargs; " \
 			"cp ${ramdisk_addr} ${ramdisk_addr_r} ${maxramdisk}; " \
 			"bootm ${kernel_addr} ${ramdisk_addr_r}\0" \
-		"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0"
+		"fdtfile=" CONFIG_DEFAULT_DEVICE_TREE ".dtb\0"
 
 /* FLASH and environment organization */
 #define PHYS_FLASH_SIZE			0x04000000	/* 64MB */
