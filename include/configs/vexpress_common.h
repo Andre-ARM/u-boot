@@ -162,8 +162,6 @@
 
 /* Basic environment settings */
 #define BOOT_TARGET_DEVICES(func) \
-        func(MMC, mmc, 1) \
-        func(MMC, mmc, 0) \
         func(PXE, pxe, na) \
         func(DHCP, dhcp, na)
 #include <config_distro_bootcmd.h>

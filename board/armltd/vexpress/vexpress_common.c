@@ -29,7 +29,9 @@
 #include <asm/arch/systimer.h>
 #include <asm/arch/sysctrl.h>
 #include <asm/arch/wdt.h>
+#ifdef CONFIG_ARM_PL180_MMCI
 #include "../drivers/mmc/arm_pl180_mmci.h"
+#endif
 
 static struct systimer *systimer_base = (struct systimer *)V2M_TIMER01;
 static struct sysctrl *sysctrl_base = (struct sysctrl *)SCTL_BASE;
