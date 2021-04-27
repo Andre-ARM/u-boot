@@ -21,8 +21,6 @@
 #include <init.h>
 #include <malloc.h>
 #include <errno.h>
-#include <net.h>
-#include <netdev.h>
 #include <asm/global_data.h>
 #include <asm/io.h>
 #include <asm/mach-types.h>
@@ -64,15 +62,6 @@ int board_init(void)
 	vexpress_timer_init();
 
 	return 0;
-}
-
-int board_eth_init(struct bd_info *bis)
-{
-	int rc = 0;
-#ifdef CONFIG_SMC911X
-	rc = smc911x_initialize(0, CONFIG_SMC911X_BASE);
-#endif
-	return rc;
 }
 
 int cpu_mmc_init(struct bd_info *bis)

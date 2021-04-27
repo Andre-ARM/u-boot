@@ -652,6 +652,7 @@ config ARCH_VEXPRESS
 	select PL01X_SERIAL
 	select DM
 	select DM_SERIAL
+	select DM_ETH
 	select OF_CONTROL
 	select OF_SEPARATE
 	imply DISTRO_DEFAULTS
