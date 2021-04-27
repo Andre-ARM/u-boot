@@ -145,13 +145,6 @@
 #define CONFIG_SYS_LOAD_ADDR		(V2M_BASE + 0x8000)
 #define LINUX_BOOT_PARAM_ADDR		(V2M_BASE + 0x2000)
 
-/* Physical Memory Map */
-#define PHYS_SDRAM_1			(V2M_BASE)	/* SDRAM Bank #1 */
-#define PHYS_SDRAM_2			(((unsigned int)V2M_BASE) + \
-					((unsigned int)0x20000000))
-#define PHYS_SDRAM_1_SIZE		0x20000000	/* 512 MB */
-#define PHYS_SDRAM_2_SIZE		0x20000000	/* 512 MB */
-
 /* additions for new relocation code */
 #define CONFIG_SYS_SDRAM_BASE		V2M_BASE
 #define CONFIG_SYS_INIT_SP_ADDR		(CONFIG_SYS_SDRAM_BASE + 0x1000)

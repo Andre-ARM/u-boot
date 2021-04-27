@@ -32,4 +32,8 @@ config TARGET_VEXPRESS_CA9X4
 
 endchoice
 
+config SYS_TEXT_BASE
+	default 0x80800000 if VEXPRESS_EXTENDED_MEMORY_MAP
+	default 0x60800000
+
 endif
