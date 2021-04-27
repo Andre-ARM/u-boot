@@ -49,33 +49,10 @@
  */
 #define V2M_NOR0		(V2M_PA_CS0)
 #define V2M_NOR1		(V2M_PA_CS1)
-#define V2M_SRAM		(V2M_PA_CS2)
-#define V2M_VIDEO_SRAM		(V2M_PA_CS3 + 0x00000000)
-#define V2M_ISP1761		(V2M_PA_CS3 + 0x03000000)
 
 /* Common peripherals relative to CS7. */
-#define V2M_AACI		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(4))
-#define V2M_MMCI		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(5))
-#define V2M_KMI0		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(6))
-#define V2M_KMI1		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(7))
-
-#define V2M_UART0		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(9))
-#define V2M_UART1		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(10))
-#define V2M_UART2		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(11))
-#define V2M_UART3		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(12))
-
-#define V2M_WDT			(V2M_PA_CS7 + V2M_PERIPH_OFFSET(15))
-
 #define V2M_TIMER01		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(17))
 #define V2M_TIMER23		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(18))
-
-#define V2M_SERIAL_BUS_DVI	(V2M_PA_CS7 + V2M_PERIPH_OFFSET(22))
-#define V2M_RTC			(V2M_PA_CS7 + V2M_PERIPH_OFFSET(23))
-
-#define V2M_CF			(V2M_PA_CS7 + V2M_PERIPH_OFFSET(26))
-
-#define V2M_CLCD		(V2M_PA_CS7 + V2M_PERIPH_OFFSET(31))
-#define V2M_SIZE_CS7		V2M_PERIPH_OFFSET(32)
 
 /* System register offsets. */
 #define V2M_SYS_CFGDATA		(V2M_SYSREGS + 0x0a0)
@@ -84,12 +61,6 @@
 
 /* Board info register */
 #define SYS_ID				V2M_SYSREGS
-#define CONFIG_REVISION_TAG		1
-
-#define CONFIG_CMDLINE_TAG		1	/* enable passing of ATAGs */
-#define CONFIG_SETUP_MEMORY_TAGS	1
-#define CONFIG_SYS_L2CACHE_OFF		1
-#define CONFIG_INITRD_TAG		1
 
 /* Size of malloc() pool */
 #define CONFIG_SYS_MALLOC_LEN		(CONFIG_ENV_SIZE + 512 * 1024) /* >= 512 KiB */
@@ -103,12 +74,6 @@
 
 /* PL011 Serial Configuration */
 #define CONFIG_PL011_CLOCK		24000000
-#define CONFIG_PL01x_PORTS		{(void *)CONFIG_SYS_SERIAL0, \
-					 (void *)CONFIG_SYS_SERIAL1}
-
-#define CONFIG_SYS_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
-#define CONFIG_SYS_SERIAL0		V2M_UART0
-#define CONFIG_SYS_SERIAL1		V2M_UART1
 
 #define CONFIG_ARM_PL180_MMCI_BASE	V2M_MMCI
 #define CONFIG_SYS_MMC_MAX_BLK_COUNT	127
@@ -119,7 +84,6 @@
 
 /* Miscellaneous configurable options */
 #define CONFIG_SYS_LOAD_ADDR		(V2M_BASE + 0x8000)
-#define LINUX_BOOT_PARAM_ADDR		(V2M_BASE + 0x2000)
 
 /* additions for new relocation code */
 #define CONFIG_SYS_SDRAM_BASE		V2M_BASE

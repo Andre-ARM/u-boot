@@ -74,9 +74,6 @@ static inline void delay(ulong loops)
 
 int board_init(void)
 {
-	gd->bd->bi_boot_params = LINUX_BOOT_PARAM_ADDR;
-	gd->bd->bi_arch_number = MACH_TYPE_VEXPRESS;
-
 	icache_enable();
 	flash__init();
 	vexpress_timer_init();
