@@ -646,16 +646,19 @@ config ARCH_BCM6858
 	select OF_CONTROL
 	imply CMD_DM
 
-config TARGET_VEXPRESS_CA15_TC2
-	bool "Support vexpress_ca15_tc2"
+config ARCH_VEXPRESS
+	bool "Support Arm Ltd. Versatile Express (VExpress) family"
 	select CPU_V7A
-	select CPU_V7_HAS_NONSEC
-	select CPU_V7_HAS_VIRT
 	select PL01X_SERIAL
 	select DM
 	select DM_SERIAL
 	select OF_CONTROL
 	select OF_SEPARATE
+	imply DISTRO_DEFAULTS
+	select MTD
+	select MTD_NOR_FLASH
+	select FLASH_CFI_DRIVER
+	imply CONS_INDEX_0
 
 config ARCH_BCMSTB
 	bool "Broadcom BCM7XXX family"
@@ -667,24 +670,6 @@ config ARCH_BCMSTB
 	help
 	  This enables support for Broadcom ARM-based set-top box
 	  chipsets, including the 7445 family of chips.
-
-config TARGET_VEXPRESS_CA5X2
-	bool "Support vexpress_ca5x2"
-	select CPU_V7A
-	select PL01X_SERIAL
-	select DM
-	select DM_SERIAL
-	select OF_CONTROL
-	select OF_SEPARATE
-
-config TARGET_VEXPRESS_CA9X4
-	bool "Support vexpress_ca9x4"
-	select CPU_V7A
-	select PL01X_SERIAL
-	select DM
-	select DM_SERIAL
-	select OF_CONTROL
-	select OF_SEPARATE
 
 config TARGET_BCMCYGNUS
 	bool "Support bcmcygnus"

@@ -8,8 +8,8 @@
  *   configurations.
  */
 
-#ifndef __VEXPRESS_COMMON_H
-#define __VEXPRESS_COMMON_H
+#ifndef __VEXPRESS_H
+#define __VEXPRESS_H
 
 /*
  * Definitions copied from linux kernel:
@@ -240,4 +240,4 @@
 #define CONFIG_SMP_PEN_ADDR		VEXPRESS_SYSFLAGS_ADDR
 #endif
 
-#endif /* VEXPRESS_COMMON_H */
+#endif /* VEXPRESS_H */
