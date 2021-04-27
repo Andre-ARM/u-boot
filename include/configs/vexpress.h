@@ -82,30 +82,6 @@
 #define V2M_SYS_CFGCTRL		(V2M_SYSREGS + 0x0a4)
 #define V2M_SYS_CFGSTAT		(V2M_SYSREGS + 0x0a8)
 
-/*
- * Configuration
- */
-#define SYS_CFG_START		(1 << 31)
-#define SYS_CFG_WRITE		(1 << 30)
-#define SYS_CFG_OSC		(1 << 20)
-#define SYS_CFG_VOLT		(2 << 20)
-#define SYS_CFG_AMP		(3 << 20)
-#define SYS_CFG_TEMP		(4 << 20)
-#define SYS_CFG_RESET		(5 << 20)
-#define SYS_CFG_SCC		(6 << 20)
-#define SYS_CFG_MUXFPGA		(7 << 20)
-#define SYS_CFG_SHUTDOWN	(8 << 20)
-#define SYS_CFG_REBOOT		(9 << 20)
-#define SYS_CFG_DVIMODE		(11 << 20)
-#define SYS_CFG_POWER		(12 << 20)
-#define SYS_CFG_SITE_MB		(0 << 16)
-#define SYS_CFG_SITE_DB1	(1 << 16)
-#define SYS_CFG_SITE_DB2	(2 << 16)
-#define SYS_CFG_STACK(n)	((n) << 12)
-
-#define SYS_CFG_ERR		(1 << 1)
-#define SYS_CFG_COMPLETE	(1 << 0)
-
 /* Board info register */
 #define SYS_ID				V2M_SYSREGS
 #define CONFIG_REVISION_TAG		1

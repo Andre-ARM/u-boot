@@ -31,6 +31,26 @@
 #include "../drivers/mmc/arm_pl180_mmci.h"
 #endif
 
+#define SYS_CFG_START           (1 << 31)
+#define SYS_CFG_WRITE           (1 << 30)
+#define SYS_CFG_OSC             (1 << 20)
+#define SYS_CFG_VOLT            (2 << 20)
+#define SYS_CFG_AMP             (3 << 20)
+#define SYS_CFG_TEMP            (4 << 20)
+#define SYS_CFG_RESET           (5 << 20)
+#define SYS_CFG_SCC             (6 << 20)
+#define SYS_CFG_MUXFPGA         (7 << 20)
+#define SYS_CFG_SHUTDOWN        (8 << 20)
+#define SYS_CFG_REBOOT          (9 << 20)
+#define SYS_CFG_DVIMODE         (11 << 20)
+#define SYS_CFG_POWER           (12 << 20)
+#define SYS_CFG_SITE_MB         (0 << 16)
+#define SYS_CFG_SITE_DB1        (1 << 16)
+#define SYS_CFG_SITE_DB2        (2 << 16)
+#define SYS_CFG_STACK(n)        ((n) << 12)
+#define SYS_CFG_ERR             (1 << 1)
+#define SYS_CFG_COMPLETE        (1 << 0)
+
 static struct systimer *systimer_base = (struct systimer *)V2M_TIMER01;
 static struct sysctrl *sysctrl_base = (struct sysctrl *)SCTL_BASE;
 
