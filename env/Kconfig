@@ -80,7 +80,7 @@ config ENV_IS_IN_EXT4
 config ENV_IS_IN_FLASH
 	bool "Environment in flash memory"
 	depends on !CHAIN_OF_TRUST
-	default y if ARCH_CINTEGRATOR
+	default y if ARCH_CINTEGRATOR || ARCH_VEXPRESS
 	default y if ARCH_INTEGRATOR_CP
 	default y if M548x || M547x || M5282 || MCF547x_8x
 	default y if MCF532x || MCF52x2
@@ -564,6 +564,7 @@ config ENV_OFFSET_REDUND
 config ENV_SIZE
 	hex "Environment Size"
 	default 0x40000 if ENV_IS_IN_SPI_FLASH && ARCH_ZYNQMP
+	default 0x40000 if ARCH_VEXPRESS
 	default 0x20000 if ARCH_SUNXI || ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
 	default 0x8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
 	default 0x2000 if ARCH_ROCKCHIP && ENV_IS_IN_SPI_FLASH
@@ -577,7 +578,7 @@ config ENV_SECT_SIZE
 	hex "Environment Sector-Size"
 	depends on ENV_IS_IN_FLASH || ENV_IS_IN_SPI_FLASH
 	default 0x2000 if ARCH_ROCKCHIP
-	default 0x40000 if ARCH_ZYNQMP || ARCH_VERSAL
+	default 0x40000 if ARCH_ZYNQMP || ARCH_VERSAL || ARCH_VEXPRESS
 	default 0x20000 if ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
 	default 0x20000 if MICROBLAZE && ENV_IS_IN_SPI_FLASH
 	help
