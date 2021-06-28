@@ -235,4 +235,9 @@
 /* Monitor Command Prompt */
 #define CONFIG_SYS_CBSIZE		512	/* Console I/O Buffer Size */
 
+#ifdef CONFIG_CPU_V7_HAS_VIRT
+#define VEXPRESS_SYSFLAGS_ADDR		0x1c010030
+#define CONFIG_SMP_PEN_ADDR		VEXPRESS_SYSFLAGS_ADDR
+#endif
+
 #endif /* VEXPRESS_COMMON_H */

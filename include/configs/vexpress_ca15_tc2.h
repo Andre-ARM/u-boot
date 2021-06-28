@@ -12,7 +12,4 @@
 
 #include "vexpress_common.h"
 
-#define VEXPRESS_SYSFLAGS_ADDR	0x1c010030
-#define CONFIG_SMP_PEN_ADDR	VEXPRESS_SYSFLAGS_ADDR
-
 #endif
