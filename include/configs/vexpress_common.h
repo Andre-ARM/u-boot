@@ -15,7 +15,7 @@
  * Definitions copied from linux kernel:
  * arch/arm/mach-vexpress/include/mach/motherboard.h
  */
-#ifdef CONFIG_VEXPRESS_ORIGINAL_MEMORY_MAP
+#ifndef CONFIG_VEXPRESS_EXTENDED_MEMORY_MAP
 /* CS register bases for the original memory map. */
 #define V2M_PA_CS0		0x40000000
 #define V2M_PA_CS1		0x44000000
@@ -29,8 +29,7 @@
 #define V2M_SERIAL_BUS_PCI	(V2M_PA_CS7 + V2M_PERIPH_OFFSET(2))
 
 #define V2M_BASE		0x60000000
-#elif defined(CONFIG_VEXPRESS_EXTENDED_MEMORY_MAP)
-/* CS register bases for the extended memory map. */
+#else		/* CS register bases for the extended memory map. */
 #define V2M_PA_CS0		0x08000000
 #define V2M_PA_CS1		0x0c000000
 #define V2M_PA_CS2		0x14000000
@@ -169,7 +168,7 @@
         func(DHCP, dhcp, na)
 #include <config_distro_bootcmd.h>
 
-#ifdef CONFIG_VEXPRESS_ORIGINAL_MEMORY_MAP
+#ifndef CONFIG_VEXPRESS_EXTENDED_MEMORY_MAP
 #define CONFIG_PLATFORM_ENV_SETTINGS \
 		"loadaddr=0x80008000\0" \
 		"ramdisk_addr_r=0x61000000\0" \
@@ -179,7 +178,7 @@
 		"pxefile_addr_r=0x88000000\0" \
 		"scriptaddr=0x88000000\0" \
 		"kernel_addr_r=0x80008000\0"
-#elif defined(CONFIG_VEXPRESS_EXTENDED_MEMORY_MAP)
+#else
 #define CONFIG_PLATFORM_ENV_SETTINGS \
 		"loadaddr=0xa0008000\0" \
 		"ramdisk_addr_r=0x81000000\0" \

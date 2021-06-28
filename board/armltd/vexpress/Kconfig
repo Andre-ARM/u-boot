@@ -36,3 +36,7 @@ config SYS_CONFIG_NAME
 	default "vexpress_ca9x4"
 
 endif
+
+config VEXPRESS_EXTENDED_MEMORY_MAP
+	bool
+	default y if TARGET_VEXPRESS_CA15_TC2 || TARGET_VEXPRESS_CA5X2

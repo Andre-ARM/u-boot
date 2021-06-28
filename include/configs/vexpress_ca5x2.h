@@ -10,7 +10,6 @@
 #ifndef __VEXPRESS_CA5X2_h
 #define __VEXPRESS_CA5X2_h
 
-#define CONFIG_VEXPRESS_EXTENDED_MEMORY_MAP
 #include "vexpress_common.h"
 
 #endif /* __VEXPRESS_CA5X2_h */
