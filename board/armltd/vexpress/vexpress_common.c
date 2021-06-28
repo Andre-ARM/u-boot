@@ -198,7 +198,7 @@ void smp_set_core_boot_addr(unsigned long addr, int corenr)
 	 * by writing to the next address, since any writes to the address
 	 * at offset 0 will only be ORed in
 	 */
-	writel(~0, CONFIG_SYSFLAGS_ADDR + 4);
-	writel(addr, CONFIG_SYSFLAGS_ADDR);
+	writel(~0, VEXPRESS_SYSFLAGS_ADDR + 4);
+	writel(addr, VEXPRESS_SYSFLAGS_ADDR);
 }
 #endif
